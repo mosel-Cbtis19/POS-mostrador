@@ -1,0 +1,12 @@
+# =============================================================================
+# PROYECTO: SysVentas - Sistema de Punto de Venta de Mostrador (POS)
+# INSTITUCIÓN: CBTis No. 19 "Miguel Hidalgo y Costilla" - Colima, Col., México
+# ARCHIVO: .htaccess (Raíz del Proyecto)
+# DESCRIPCIÓN: Reescritura para enrutar el tráfico hacia public/
+# =============================================================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^$ public/ [L]
+    RewriteRule (.*) public/$1 [L]
+</IfModule>

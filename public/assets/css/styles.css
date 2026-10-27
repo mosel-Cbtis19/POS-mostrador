@@ -1,0 +1,123 @@
+/* =============================================================================
+   PROYECTO: SysVentas - Sistema de Punto de Venta de Mostrador (POS)
+   INSTITUCIÓN: CBTis No. 19 "Miguel Hidalgo y Costilla" - Colima, Col., México
+   ARCHIVO: public/assets/css/styles.css
+   DESCRIPCIÓN: Estilos personalizados y diseño responsivo para terminal POS.
+   ============================================================================= */
+
+:root {
+    --primary-navy: #1e3a8a;
+    --primary-blue: #2563eb;
+    --accent-emerald: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-rose: #ef4444;
+    --dark-slate: #1f2937;
+    --light-bg: #f8fafc;
+    --border-color: #e2e8f0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-slate);
+    min-height: 100vh;
+}
+
+/* Navbar Personalizado */
+.navbar-sysventas {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.brand-badge {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 0.25rem 0.6rem;
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+}
+
+/* Layout del POS (Terminal de Mostrador) */
+.pos-container {
+    height: calc(100vh - 72px);
+    overflow: hidden;
+}
+
+.pos-catalog-panel {
+    height: 100%;
+    overflow-y: auto;
+    border-right: 1px solid var(--border-color);
+}
+
+.pos-ticket-panel {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.ticket-items-scroll {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.ticket-totals-box {
+    background: #f1f5f9;
+    border-top: 2px solid var(--primary-navy);
+    padding: 1.25rem;
+}
+
+/* Total Grande en Display */
+.display-total {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--primary-navy);
+    letter-spacing: -0.5px;
+}
+
+/* Tarjetas de Producto para Búsqueda Visual */
+.product-card {
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: 1px solid var(--border-color);
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--primary-blue);
+}
+
+/* Badges de Stock */
+.badge-stock-normal {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.badge-stock-critical {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.badge-stock-out {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* Formato de Ticket Térmico Imprimible */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #thermal-ticket, #thermal-ticket * {
+        visibility: visible;
+    }
+    #thermal-ticket {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 80mm;
+        font-family: 'Courier New', monospace;
+        font-size: 11px;
+        padding: 5px;
+    }
+}

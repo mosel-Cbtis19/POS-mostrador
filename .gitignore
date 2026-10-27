@@ -1,0 +1,25 @@
+# =============================================================================
+# PROYECTO: SysVentas POS - Archivos Ignorados para Repositorio Público
+# =============================================================================
+
+# Documentación institucional y bitácoras locales
+docs/
+agente.md
+Agente.md
+scratch/
+~$*.docx
+
+# Entorno de desarrollo, IDEs y editores
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs y archivos temporales
+*.log
+*.tmp

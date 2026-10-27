@@ -1,0 +1,34 @@
+# =============================================================================
+# PROYECTO: SysVentas - Sistema de Punto de Venta de Mostrador (POS)
+# INSTITUCIÓN: CBTis No. 19 "Miguel Hidalgo y Costilla" - Colima, Col., México
+# ARCHIVO: public/.htaccess
+# DESCRIPCIÓN: Configuración de seguridad perimetral Apache y Front Controller (Fase 11).
+# =============================================================================
+
+# 1. Deshabilitar listado de directorios
+Options -Indexes
+
+# 2. Protección de Archivos Sensibles y Ocultos
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(?i)\.(sql|log|ini|bak|env|config|sh|bat)$">
+    Require all denied
+</FilesMatch>
+
+# 3. Cabeceras de Seguridad HTTP
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# 4. Enrutamiento Front Controller
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
